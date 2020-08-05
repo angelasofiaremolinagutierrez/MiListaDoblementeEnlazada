@@ -19,8 +19,11 @@ public class List implements ListInterface{
 
     @Override
     public boolean isEmpty() {
-        // todo
-        return false;
+        if(size == 0){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     @Override
@@ -29,8 +32,9 @@ public class List implements ListInterface{
     }
 
     @Override
-    public void clear() {
-        // TODO
+    public void clear() { //todo preguntar por este metodo
+        head = null;
+        tail = null;
         size = 0;
     }
 
@@ -64,18 +68,21 @@ public class List implements ListInterface{
     @Override
     public boolean insert(ListNode node, Object object) {
         // TODO
+        size += 1;
         return false;
     }
 
     @Override
     public boolean insert(Object ob, Object object) {
         // TODO
+        size += 1;
         return false;
     }
 
     @Override
     public boolean insertHead(Object object) {
         // TODO
+        size += 1;
         return false;
     }
 
@@ -90,6 +97,7 @@ public class List implements ListInterface{
             tail.next = nuevo;
             tail = nuevo;
         }
+        size += 1;
         return true;
     }
 
@@ -102,6 +110,7 @@ public class List implements ListInterface{
     @Override
     public boolean remove(ListNode node) {
         // TODO
+        size -= 1;
         return false;
     }
 
