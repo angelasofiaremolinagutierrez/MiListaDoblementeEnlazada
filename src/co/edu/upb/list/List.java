@@ -2,7 +2,7 @@ package co.edu.upb.list;
 
 import java.util.Iterator;
 
-public class List implements ListInterface{
+public class List implements ListInterface, Iterable<ListNode> {
     ListNode head;
     ListNode tail;
 
@@ -50,7 +50,12 @@ public class List implements ListInterface{
 
     @Override
     public Object get(ListNode node) {
-        // TODO
+        ListNode n = head;
+        while (n != null){
+            if(n.getObject().toString().equals(node.getObject().toString())){
+                return n;
+            }
+        }
         return null;
     }
 
