@@ -3,8 +3,8 @@ package co.edu.upb.list;
 import java.util.Iterator;
 
 public class List implements ListInterface, Iterable<ListNode> {
-    ListNode head;
-    ListNode tail;
+    public ListNode head;
+    public ListNode tail;
 
     int size = 0;
 
@@ -50,18 +50,20 @@ public class List implements ListInterface, Iterable<ListNode> {
 
     @Override
     public Object get(ListNode node) {
-        ListNode n = head;
-        while (n != null){
-            if(n.getObject().toString().equals(node.getObject().toString())){
-                return n;
-            }
-        }
-        return null;
+        return node.getObject();
     }
 
     @Override
-    public Object search(Object object) {
-        // TODO
+    public ListNode search(Object object) {
+        ListNode n = head;
+        while(n != null){
+            if(n.getObject().toString().equals(object.toString())){
+                return n;
+            }else{
+                n = n.next;
+            }
+        }
+        System.out.println("Ese objeto no se encuentra en la lista");
         return null;
     }
 
