@@ -88,9 +88,17 @@ public class List implements ListInterface, Iterable<ListNode> {
 
     @Override
     public boolean insertHead(Object object) {
-        // TODO
+        ListNode nuevo = new ListNode(object);
+        if(isEmpty()){
+            head = nuevo;
+            tail = head;
+        }else{
+            nuevo.next = head;
+            head.prev = nuevo;
+            head = nuevo;
+        }
         size += 1;
-        return false;
+        return true;
     }
 
     @Override
