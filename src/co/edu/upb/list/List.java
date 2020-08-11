@@ -73,10 +73,22 @@ public class List implements ListInterface, Iterable<ListNode> {
     }
 
     @Override
-    public boolean insert(ListNode node, Object object) {
-        // TODO
-        size += 1;
-        return false;
+    public boolean insert(ListNode nodoAtras, Object object) {
+        if(nodoAtras.isEquals(this.tail)){
+            return insertTail(object);
+        }else if(nodoAtras.isEquals(this.head)){
+            return insertHead(object);
+        }else{
+
+            ListNode nuevoNodo = new ListNode(object);
+            nuevoNodo.prev = nodoAtras; //el nuevo agarra al de atras
+            nuevoNodo.next = nodoAtras.next; // el nuevo agarra al siguiente
+            nodoAtras.next = nuevoNodo; //el de atrás agarra al nuevo y suelta al siguiente
+            nuevoNodo.next.prev = nuevoNodo; //el siguiente agarra al nuevo y suelta el de atrás
+
+            size += 1;
+            return true;
+        }
     }
 
     @Override
@@ -118,15 +130,31 @@ public class List implements ListInterface, Iterable<ListNode> {
 
     @Override
     public boolean set(ListNode node, Object object) {
-        // TODO
-        return false;
+        node.setObject(object);
+        return true;
     }
 
     @Override
     public boolean remove(ListNode node) {
-        // TODO
+        ListNode n = head;
+        if(node.isEquals(head)){
+            head = head.next;
+            
+        }
+        while (n != null){
+            if(n.isEquals(node)){
+                ListNode anterior = n.prev;
+                ListNode siguiente = n.next;
+
+                anterior.next = siguiente;
+                siguiente.prev = anterior;
+                n = null;
+            }else{
+                n = n.next;
+            }
+        }
         size -= 1;
-        return false;
+        return true;
     }
 
     @Override

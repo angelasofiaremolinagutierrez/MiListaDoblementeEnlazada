@@ -16,12 +16,12 @@ public class ListNode {
         this.next = null;
     }
 
-    public ListNode getPrev() {
-        return prev;
-    }
-
-    public void setPrev(ListNode prev) {
-        this.prev = prev;
+    public boolean isEquals(ListNode nodo){ //si un nodo es igual a otro
+        if(this.toString().equals(nodo.toString())){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public Object getObject() {
@@ -32,19 +32,11 @@ public class ListNode {
         this.object = object;
     }
 
-    public ListNode getNext() {
-        return next;
-    }
-
-    public void setNext(ListNode next) {
-        this.next = next;
-    }
-
     @Override
     public String toString() {
-        return "ListNode{" +
-                "prev=" + prev +
-                ", object=" + object +
+        return "{" +
+                //"prev=" + prev +
+                "object=" + object +
                 ", next=" + next +
                 '}';
     }
