@@ -10,7 +10,7 @@ public class Main {
         }
 
         printDoubleList(doubleList);
-        doubleList.insert(doubleList.head.next,1.5);
+        doubleList.insert(2.5,2);
         printDoubleList(doubleList);
 
     }

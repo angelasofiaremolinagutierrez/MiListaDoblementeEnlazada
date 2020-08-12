@@ -92,8 +92,15 @@ public class DoubleList implements DoubleListInterface, Iterable<DoubleListNode>
     }
 
     @Override
-    public boolean insert(Object ob, Object object) {
-        // TODO
+    public boolean insert(Object object, Object objectRef) {
+        DoubleListNode nuevoNodo = new DoubleListNode(object);
+        DoubleListNode nodoRef = this.search(objectRef);
+
+        nuevoNodo.next = nodoRef.next;// el nuevo agarra al siguiente
+        nuevoNodo.prev = nodoRef; //el nuevo agarra al de atras
+        nodoRef.next = nuevoNodo; //el de atrás agarra al nuevo y suelta al siguiente
+        nuevoNodo.next.prev = nuevoNodo;//el siguiente agarra al nuevo y suelta el de atrás
+
         size += 1;
         return false;
     }
