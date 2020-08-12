@@ -2,7 +2,7 @@ package co.edu.upb.list;
 
 import java.util.Iterator;
 
-public interface ListInterface {
+public interface DoubleListInterface {
 
     /*
     essential operations
@@ -17,13 +17,13 @@ public interface ListInterface {
 
     public Object getTail();
 
-    public Object get(ListNode node);
+    public Object get(DoubleListNode node);
 
     public Object search(Object object);
 
     public boolean add(Object object);
 
-    public boolean insert(ListNode node, Object object);
+    public boolean insert(DoubleListNode node, Object object);
 
     public boolean insert(Object ob, Object object);
 
@@ -31,16 +31,16 @@ public interface ListInterface {
 
     public boolean insertTail(Object object);
 
-    public boolean set(ListNode node, Object object);
+    public boolean set(DoubleListNode node, Object object);
 
-    public boolean remove(ListNode node);
+    public boolean remove(DoubleListNode node);
 
     /*
     expansion operations
      */
     public boolean contains(Object object);
 
-    public Iterator<ListNode> iterator();
+    public Iterator<DoubleListNode> iterator();
 
     public Object[] toArray();
 
@@ -48,13 +48,13 @@ public interface ListInterface {
 
     public Object getBeforeTo();
 
-    public Object getBeforeTo(ListNode node);
+    public Object getBeforeTo(DoubleListNode node);
 
     public Object getNextTo();
 
-    public Object getNextTo(ListNode node);
+    public Object getNextTo(DoubleListNode node);
 
-    public List subList(ListNode from, ListNode to);
+    public DoubleList subList(DoubleListNode from, DoubleListNode to);
 
-    public List sortList();
+    public DoubleList sortList();
 }

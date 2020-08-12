@@ -2,18 +2,18 @@ package co.edu.upb.list;
 
 import java.util.Iterator;
 
-public class List implements ListInterface, Iterable<ListNode> {
-    public ListNode head;
-    public ListNode tail;
+public class DoubleList implements DoubleListInterface, Iterable<DoubleListNode> {
+    public DoubleListNode head;
+    public DoubleListNode tail;
 
     int size = 0;
 
-    public List() {
+    public DoubleList() {
         this.head = null;
         this.head = null;
     }
 
-    public List(Object object){
+    public DoubleList(Object object){
         insertTail(object);
     }
 
@@ -49,13 +49,13 @@ public class List implements ListInterface, Iterable<ListNode> {
     }
 
     @Override
-    public Object get(ListNode node) {
+    public Object get(DoubleListNode node) {
         return node.getObject();
     }
 
     @Override
-    public ListNode search(Object object) {
-        ListNode n = head;
+    public DoubleListNode search(Object object) {
+        DoubleListNode n = head;
         while(n != null){
             if(n.getObject().toString().equals(object.toString())){
                 return n;
@@ -73,14 +73,14 @@ public class List implements ListInterface, Iterable<ListNode> {
     }
 
     @Override
-    public boolean insert(ListNode nodoAtras, Object object) {
+    public boolean insert(DoubleListNode nodoAtras, Object object) {
         if(nodoAtras.isEquals(this.tail)){
             return insertTail(object);
         }else if(nodoAtras.isEquals(this.head)){
             return insertHead(object);
         }else{
 
-            ListNode nuevoNodo = new ListNode(object);
+            DoubleListNode nuevoNodo = new DoubleListNode(object);
             nuevoNodo.prev = nodoAtras; //el nuevo agarra al de atras
             nuevoNodo.next = nodoAtras.next; // el nuevo agarra al siguiente
             nodoAtras.next = nuevoNodo; //el de atrás agarra al nuevo y suelta al siguiente
@@ -100,7 +100,7 @@ public class List implements ListInterface, Iterable<ListNode> {
 
     @Override
     public boolean insertHead(Object object) {
-        ListNode nuevo = new ListNode(object);
+        DoubleListNode nuevo = new DoubleListNode(object);
         if(isEmpty()){
             head = nuevo;
             tail = head;
@@ -115,7 +115,7 @@ public class List implements ListInterface, Iterable<ListNode> {
 
     @Override
     public boolean insertTail(Object object) {
-        ListNode nuevo = new ListNode(object);
+        DoubleListNode nuevo = new DoubleListNode(object);
         if(isEmpty()){
             head = nuevo;
             tail = head;
@@ -129,22 +129,22 @@ public class List implements ListInterface, Iterable<ListNode> {
     }
 
     @Override
-    public boolean set(ListNode node, Object object) {
+    public boolean set(DoubleListNode node, Object object) {
         node.setObject(object);
         return true;
     }
 
     @Override
-    public boolean remove(ListNode node) {
-        ListNode n = head;
+    public boolean remove(DoubleListNode node) {
+        DoubleListNode n = head;
         if(node.isEquals(head)){
             head = head.next;
             
         }
         while (n != null){
             if(n.isEquals(node)){
-                ListNode anterior = n.prev;
-                ListNode siguiente = n.next;
+                DoubleListNode anterior = n.prev;
+                DoubleListNode siguiente = n.next;
 
                 anterior.next = siguiente;
                 siguiente.prev = anterior;
@@ -164,7 +164,7 @@ public class List implements ListInterface, Iterable<ListNode> {
     }
 
     @Override
-    public Iterator<ListNode> iterator() {
+    public Iterator<DoubleListNode> iterator() {
         // TODO
         return null;
     }
@@ -188,7 +188,7 @@ public class List implements ListInterface, Iterable<ListNode> {
     }
 
     @Override
-    public Object getBeforeTo(ListNode node) {
+    public Object getBeforeTo(DoubleListNode node) {
         // TODO
         return null;
     }
@@ -200,19 +200,19 @@ public class List implements ListInterface, Iterable<ListNode> {
     }
 
     @Override
-    public Object getNextTo(ListNode node) {
+    public Object getNextTo(DoubleListNode node) {
         // TODO
         return null;
     }
 
     @Override
-    public List subList(ListNode from, ListNode to) {
+    public DoubleList subList(DoubleListNode from, DoubleListNode to) {
         // TODO
         return null;
     }
 
     @Override
-    public List sortList() {
+    public DoubleList sortList() {
         // TODO
         return null;
     }

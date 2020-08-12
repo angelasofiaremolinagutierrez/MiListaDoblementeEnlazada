@@ -1,22 +1,22 @@
 package co.edu.upb.list;
 
-public class ListNode {
-    public ListNode prev;
+public class DoubleListNode {
+    public DoubleListNode prev;
     private Object object;
-    public ListNode next;
+    public DoubleListNode next;
 
-    public ListNode() {
+    public DoubleListNode() {
         this.prev = null;
         this.object = null;
         this.next = null;
     }
-    public ListNode(Object object) {
+    public DoubleListNode(Object object) {
         this.prev = null;
         this.object = object;
         this.next = null;
     }
 
-    public boolean isEquals(ListNode nodo){ //si un nodo es igual a otro
+    public boolean isEquals(DoubleListNode nodo){ //si un nodo es igual a otro
         if(this.toString().equals(nodo.toString())){
             return true;
         }else{
