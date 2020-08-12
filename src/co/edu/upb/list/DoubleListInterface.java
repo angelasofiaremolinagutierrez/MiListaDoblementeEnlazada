@@ -46,11 +46,9 @@ public interface DoubleListInterface {
 
     public Object[] toArray(Object[] object);
 
-    public Object getBeforeTo();
+    //algunos de los metodos de getBeforeTo y getNextTo fueron transladados a la clase DoubleListNode
 
     public Object getBeforeTo(DoubleListNode node);
-
-    public Object getNextTo();
 
     public Object getNextTo(DoubleListNode node);
 

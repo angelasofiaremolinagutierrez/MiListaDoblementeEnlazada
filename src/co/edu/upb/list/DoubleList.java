@@ -204,28 +204,16 @@ public class DoubleList implements DoubleListInterface, Iterable<DoubleListNode>
         }
     }
 
-    @Override
-    public Object getBeforeTo() {
-        // TODO
-        return null;
-    }
+    //algunos de los metodos getNextTo y getBeforeTo fueron trasladados a la clase DoubleListNode
 
     @Override
     public Object getBeforeTo(DoubleListNode node) {
-        // TODO
-        return null;
-    }
-
-    @Override
-    public Object getNextTo() {
-        // TODO
-        return null;
+        return node.getBeforeTo();
     }
 
     @Override
     public Object getNextTo(DoubleListNode node) {
-        // TODO
-        return null;
+        return node.getNextTo();
     }
 
     @Override

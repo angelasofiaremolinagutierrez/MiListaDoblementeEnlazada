@@ -40,4 +40,15 @@ public class DoubleListNode {
                 ", next=" + next +
                 '}';
     }
+
+    public Object getBeforeTo() {
+        DoubleListNode anterior = this.prev;
+        return anterior.getObject();
+    }
+
+    public Object getNextTo() {
+        DoubleListNode sig = this.next;
+        return sig.getObject();
+    }
+
 }
