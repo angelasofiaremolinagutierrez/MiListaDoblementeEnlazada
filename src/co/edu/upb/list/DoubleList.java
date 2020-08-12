@@ -166,7 +166,13 @@ public class DoubleList implements DoubleListInterface, Iterable<DoubleListNode>
 
     @Override
     public boolean contains(Object object) {
-        // TODO
+        DoubleListNode node = this.head;
+        while (node != null){
+            if(node.getObject().toString().equals(object.toString())){
+                return true;
+            }
+            node = node.next;
+        }
         return false;
     }
 
