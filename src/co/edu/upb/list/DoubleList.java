@@ -184,14 +184,24 @@ public class DoubleList implements DoubleListInterface, Iterable<DoubleListNode>
 
     @Override
     public Object[] toArray() {
-        // TODO
-        return new Object[0];
+        Object array[] = new Object[size];
+        this.toArray(array);
+        return array;
     }
 
     @Override
-    public Object[] toArray(Object[] object) {
-        // TODO
-        return new Object[0];
+    public Object[] toArray(Object[] array) {
+        if(array.length == this.size){
+            DoubleListNode node = this.head;
+            for (int i = 1; i <size; i++){
+                array[i] = node.getObject();
+                node = node.next;
+            }
+            return array;
+        }else{
+            System.out.println("El array en el que se quiere insertar la lista no es del mismo tamaño que la lista");
+            return null;
+        }
     }
 
     @Override
