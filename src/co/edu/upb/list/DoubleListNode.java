@@ -1,6 +1,6 @@
 package co.edu.upb.list;
 
-public class DoubleListNode {
+public class DoubleListNode implements Comparable<DoubleListNode> {
     public DoubleListNode prev;
     private Object object;
     public DoubleListNode next;
@@ -51,4 +51,8 @@ public class DoubleListNode {
         return sig.getObject();
     }
 
+    @Override
+    public int compareTo(DoubleListNode n) {
+        return (this.getObject().toString()).compareTo(n.getObject().toString());
+    }
 }

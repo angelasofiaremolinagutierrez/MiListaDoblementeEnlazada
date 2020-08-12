@@ -1,5 +1,6 @@
 package co.edu.upb.list;
 
+import java.util.Arrays;
 import java.util.Iterator;
 
 public class DoubleList implements DoubleListInterface, Iterable<DoubleListNode> {
@@ -7,6 +8,7 @@ public class DoubleList implements DoubleListInterface, Iterable<DoubleListNode>
     public DoubleListNode tail;
 
     int size = 0;
+    private DoubleListNode inode;
 
     public DoubleList() {
         this.head = null;
@@ -178,8 +180,27 @@ public class DoubleList implements DoubleListInterface, Iterable<DoubleListNode>
 
     @Override
     public Iterator<DoubleListNode> iterator() {
-        // TODO
-        return null;
+        /*
+        DoubleListNode inode = head;
+        Iterator<DoubleListNode> i = new Iterator<DoubleListNode>() {
+            @Override
+            public boolean hasNext() {
+                return inode.next ;
+            }
+
+            @Override
+            public DoubleListNode next() {
+                if (hasNext()) {
+                    DoubleListNode tmp = inode;
+                    inode = inode.next;
+                    return tmp;
+                } else {
+                    return null;
+                }
+            }
+        };
+        return i;*/
+        return null; //todo preguntar por qué no funciona
     }
 
     @Override
@@ -241,7 +262,24 @@ public class DoubleList implements DoubleListInterface, Iterable<DoubleListNode>
 
     @Override
     public DoubleList sortList() {
-        // TODO
-        return null;
+        Object[] listaAOrdenar = this.toArray();
+        Arrays.sort(listaAOrdenar);
+
+        DoubleList listaOrdenada = new DoubleList();
+        for (Object n:listaAOrdenar) {
+            listaOrdenada.add(n);
+        }
+
+        this.head = listaOrdenada.head;
+        this.tail = listaOrdenada.tail;
+        return this;
+    }
+
+    public DoubleListNode getInode() {
+        return inode;
+    }
+
+    public void setInode(DoubleListNode inode) {
+        this.inode = inode;
     }
 }
