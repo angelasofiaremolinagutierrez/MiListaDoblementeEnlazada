@@ -218,7 +218,24 @@ public class DoubleList implements DoubleListInterface, Iterable<DoubleListNode>
 
     @Override
     public DoubleList subList(DoubleListNode from, DoubleListNode to) {
-        // TODO
+        DoubleList subList = new DoubleList();
+        DoubleListNode n = this.head;
+        while (n!=null){
+            if(n.isEquals(from)){
+                subList.add(n.getObject());
+                n = n.next;
+                while (n!=null){
+                    subList.add(n.getObject());
+                    if(n.isEquals(to)){
+                        return subList;
+                    }else{
+                        n = n.next;
+                    }
+                }
+            }else{
+                n=n.next;
+            }
+        }
         return null;
     }
 
