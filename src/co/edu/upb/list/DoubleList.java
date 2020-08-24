@@ -7,23 +7,23 @@ public class DoubleList implements DoubleListInterface, Iterable<DoubleListNode>
     public DoubleListNode head;
     public DoubleListNode tail;
 
-    int size = 0;
     private DoubleListNode inode;
+    int size = 0;
 
     public DoubleList() {
         this.head = null;
         this.head = null;
     }
 
-    public DoubleList(Object object){
+    public DoubleList(Object object) {
         insertTail(object);
     }
 
     @Override
     public boolean isEmpty() {
-        if(size == 0){
+        if (size == 0) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
@@ -58,10 +58,10 @@ public class DoubleList implements DoubleListInterface, Iterable<DoubleListNode>
     @Override
     public DoubleListNode search(Object object) {
         DoubleListNode n = head;
-        while(n != null){
-            if(n.getObject().toString().equals(object.toString())){
+        while (n != null) {
+            if (n.getObject().toString().equals(object.toString())) {
                 return n;
-            }else{
+            } else {
                 n = n.next;
             }
         }
@@ -76,11 +76,11 @@ public class DoubleList implements DoubleListInterface, Iterable<DoubleListNode>
 
     @Override
     public boolean insert(DoubleListNode nodoAtras, Object object) {
-        if(nodoAtras.isEquals(this.tail)){
+        if (nodoAtras.isEquals(this.tail)) {
             return insertTail(object);
-        }else if(nodoAtras.isEquals(this.head)){
+        } else if (nodoAtras.isEquals(this.head)) {
             return insertHead(object);
-        }else{
+        } else {
 
             DoubleListNode nuevoNodo = new DoubleListNode(object);
             nuevoNodo.prev = nodoAtras; //el nuevo agarra al de atras
@@ -110,10 +110,10 @@ public class DoubleList implements DoubleListInterface, Iterable<DoubleListNode>
     @Override
     public boolean insertHead(Object object) {
         DoubleListNode nuevo = new DoubleListNode(object);
-        if(isEmpty()){
+        if (isEmpty()) {
             head = nuevo;
             tail = head;
-        }else{
+        } else {
             nuevo.next = head;
             head.prev = nuevo;
             head = nuevo;
@@ -125,10 +125,10 @@ public class DoubleList implements DoubleListInterface, Iterable<DoubleListNode>
     @Override
     public boolean insertTail(Object object) {
         DoubleListNode nuevo = new DoubleListNode(object);
-        if(isEmpty()){
+        if (isEmpty()) {
             head = nuevo;
             tail = head;
-        }else{
+        } else {
             nuevo.prev = tail;
             tail.next = nuevo;
             tail = nuevo;
@@ -146,19 +146,19 @@ public class DoubleList implements DoubleListInterface, Iterable<DoubleListNode>
     @Override
     public boolean remove(DoubleListNode node) {
         DoubleListNode n = head;
-        if(node.isEquals(head)){
+        if (node.isEquals(head)) {
             head = head.next;
-            
+
         }
-        while (n != null){
-            if(n.isEquals(node)){
+        while (n != null) {
+            if (n.isEquals(node)) {
                 DoubleListNode anterior = n.prev;
                 DoubleListNode siguiente = n.next;
 
                 anterior.next = siguiente;
                 siguiente.prev = anterior;
                 n = null;
-            }else{
+            } else {
                 n = n.next;
             }
         }
@@ -169,8 +169,8 @@ public class DoubleList implements DoubleListInterface, Iterable<DoubleListNode>
     @Override
     public boolean contains(Object object) {
         DoubleListNode node = this.head;
-        while (node != null){
-            if(node.getObject().toString().equals(object.toString())){
+        while (node != null) {
+            if (node.getObject().toString().equals(object.toString())) {
                 return true;
             }
             node = node.next;
@@ -180,12 +180,14 @@ public class DoubleList implements DoubleListInterface, Iterable<DoubleListNode>
 
     @Override
     public Iterator<DoubleListNode> iterator() {
-        /*
-        DoubleListNode inode = head;
+
+        inode = head;
         Iterator<DoubleListNode> i = new Iterator<DoubleListNode>() {
+
             @Override
             public boolean hasNext() {
-                return inode.next ;
+
+                return inode.next != null ? true : false;
             }
 
             @Override
@@ -199,27 +201,26 @@ public class DoubleList implements DoubleListInterface, Iterable<DoubleListNode>
                 }
             }
         };
-        return i;*/
-        return null; //todo preguntar por qué no funciona
+        return i;
     }
 
     @Override
     public Object[] toArray() {
-        Object array[] = new Object[size];
+        Object[] array = new Object[size];
         this.toArray(array);
         return array;
     }
 
     @Override
     public Object[] toArray(Object[] array) {
-        if(array.length == this.size){
+        if (array.length == this.size) {
             DoubleListNode node = this.head;
-            for (int i = 1; i <size; i++){
+            for (int i = 1; i < size; i++) {
                 array[i] = node.getObject();
                 node = node.next;
             }
             return array;
-        }else{
+        } else {
             System.out.println("El array en el que se quiere insertar la lista no es del mismo tamaño que la lista");
             return null;
         }
@@ -241,20 +242,20 @@ public class DoubleList implements DoubleListInterface, Iterable<DoubleListNode>
     public DoubleList subList(DoubleListNode from, DoubleListNode to) {
         DoubleList subList = new DoubleList();
         DoubleListNode n = this.head;
-        while (n!=null){
-            if(n.isEquals(from)){
+        while (n != null) {
+            if (n.isEquals(from)) {
                 subList.add(n.getObject());
                 n = n.next;
-                while (n!=null){
+                while (n != null) {
                     subList.add(n.getObject());
-                    if(n.isEquals(to)){
+                    if (n.isEquals(to)) {
                         return subList;
-                    }else{
+                    } else {
                         n = n.next;
                     }
                 }
-            }else{
-                n=n.next;
+            } else {
+                n = n.next;
             }
         }
         return null;
@@ -266,20 +267,12 @@ public class DoubleList implements DoubleListInterface, Iterable<DoubleListNode>
         Arrays.sort(listaAOrdenar);
 
         DoubleList listaOrdenada = new DoubleList();
-        for (Object n:listaAOrdenar) {
+        for (Object n : listaAOrdenar) {
             listaOrdenada.add(n);
         }
 
         this.head = listaOrdenada.head;
         this.tail = listaOrdenada.tail;
         return this;
-    }
-
-    public DoubleListNode getInode() {
-        return inode;
-    }
-
-    public void setInode(DoubleListNode inode) {
-        this.inode = inode;
     }
 }
